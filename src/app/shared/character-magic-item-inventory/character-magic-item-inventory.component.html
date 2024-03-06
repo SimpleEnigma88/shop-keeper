@@ -1,0 +1,12 @@
+
+  @for (item of charMagicItems; track item.name) {
+  <p [ngStyle]="{'position': 'relative', 'cursor': 'pointer'}"
+      (mouseover)="item.showTooltip = true"
+      (mouseout)="item.showTooltip = false">
+    {{ item.name}}
+    <span class="tooltip"
+        [ngStyle]="{'visibility': item.showTooltip ? 'visible' : 'hidden'}">
+      {{ item.desc }}
+    </span>
+  </p>
+  }
