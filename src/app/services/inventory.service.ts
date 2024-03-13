@@ -16,4 +16,11 @@ export class InventoryService {
   addCharacterMagicItem(characterId: string, magicItemId: string) {
     return this.http.post(`${environment.apiUrl}/characters/${characterId}/character_magic_items`, { magic_item_id: magicItemId });
   }
+
+  deleteCharacterMagicItem(characterId: string, magicItemId: string) {
+    return this.http.delete(`${environment.apiUrl}/characters/${characterId}/character_magic_items/${magicItemId}`);
+  }
+
+
+
 }

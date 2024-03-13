@@ -4,13 +4,15 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-interface MagicItem {
+export interface MagicItem {
+  id: string;
   name: string;
   category: string;
   desc: string;
   rarity: string;
   requires_attunement: boolean;
   showTooltip?: boolean;
+  tooltipTimeout?: any;
 }
 
 
@@ -30,12 +32,47 @@ export class CharacterMagicItemInventoryComponent implements OnInit {
 
   addMagicItem(characterId: string, magicItemId: string) {
     this.inventoryService.addCharacterMagicItem(characterId, magicItemId).subscribe(
-      (value: any) => { // Update the type of the parameter to 'any'
+      (value: any) => {
         const newItem = { ...value, showTooltip: false };
         this.charMagicItems.push(newItem);
       },
       error => console.error(error)
     );
+  }
+
+  deleteMagicItem(charID = '2', item: MagicItem) {
+    this.inventoryService.deleteCharacterMagicItem(charID, item.id).subscribe(
+      () => {
+        const index = this.charMagicItems.indexOf(item);
+        if (index > -1) {
+          this.charMagicItems.splice(index, 1);
+        }
+      },
+      error => console.error(error)
+    );
+  }
+
+  addRandomMagicItem() {
+    this.http.get('/api/magic-items').subscribe(
+      (value: any) => {
+        const magicItems = value as MagicItem[];
+        const randomIndex = Math.floor(Math.random() * magicItems.length);
+        const randomItem = magicItems[randomIndex];
+        this.addMagicItem('2', randomItem.id);
+      },
+      error => console.error(error)
+    );
+  }
+
+  showTooltipWithDelay(item: MagicItem) {
+    item.tooltipTimeout = setTimeout(() => {
+      item.showTooltip = true;
+    }, 350);  // delay in milliseconds
+  }
+
+  hideTooltipImmediately(item: MagicItem) {
+    clearTimeout(item.tooltipTimeout);
+    item.showTooltip = false;
   }
 
   ngOnInit() {
