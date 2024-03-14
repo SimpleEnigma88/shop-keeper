@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,10 @@ import { environment } from '../../environments/environment';
 
 export class InventoryService {
   constructor(private http: HttpClient) { }
+
+  getCharacterRandomMagicItem() {
+    return this.http.get(`${environment.apiUrl}/magic_items/random`);
+  }
 
   getCharacterMagicItems(characterId: string) {
     return this.http.get(`${environment.apiUrl}/characters/${characterId}/character_magic_items`);
@@ -20,7 +24,5 @@ export class InventoryService {
   deleteCharacterMagicItem(characterId: string, magicItemId: string) {
     return this.http.delete(`${environment.apiUrl}/characters/${characterId}/character_magic_items/${magicItemId}`);
   }
-
-
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InventoryService } from '../../services/inventory.service';
+import { InventoryService } from '../services/inventory.service';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -53,15 +53,12 @@ export class CharacterMagicItemInventoryComponent implements OnInit {
   }
 
   addRandomMagicItem() {
-    this.http.get('/api/magic-items').subscribe(
-      (value: any) => {
-        const magicItems = value as MagicItem[];
-        const randomIndex = Math.floor(Math.random() * magicItems.length);
-        const randomItem = magicItems[randomIndex];
-        this.addMagicItem('2', randomItem.id);
+    this.inventoryService.getCharacterRandomMagicItem().subscribe({
+      next: (value: any) => {
+        this.addMagicItem('2', value.id);
       },
-      error => console.error(error)
-    );
+      error: error => console.error(error)
+    });
   }
 
   showTooltipWithDelay(item: MagicItem) {

@@ -1,17 +1,20 @@
-@for (item of charMagicItems; track item.name) {
-<button (click)="deleteMagicItem('2', item)">X</button>
-<span class="tooltip-parent"
-    (mouseover)="showTooltipWithDelay(item)"
-    (mouseout)="hideTooltipImmediately(item)">
-  {{ item.name }}
-  <span class="tooltip"
-      [ngStyle]="{'visibility': item.showTooltip ? 'visible' : 'hidden'}">
-    {{ item.desc }}
+<div class="medievalsharp-regular">
+  <h2>Magic Items</h2>
+  @for (item of charMagicItems; track item.name) {
+  <span style="cursor: pointer;" (click)="deleteMagicItem('2', item)">X  </span>
+  <span class="tooltip-parent"
+      (mouseover)="showTooltipWithDelay(item)"
+      (mouseout)="hideTooltipImmediately(item)">
+    {{ item.name }}
+    <span class="tooltip"
+        [ngStyle]="{'visibility': item.showTooltip ? 'visible' : 'hidden'}">
+      {{ item.desc }}
+    </span>
   </span>
-</span>
-<br>
-}
+  <br>
+  }
 
-<input type="string" [(ngModel)]="newMagicItem" placeholder="Enter a digit">
-<button (click)="addMagicItem('2', newMagicItem)">Submit</button>
-<button (click)="addRandomMagicItem()">Add Random Magic Item</button>
+  <input type="string" [(ngModel)]="newMagicItem" placeholder="Enter a digit">
+  <button (click)="addMagicItem('2', newMagicItem)">Submit</button>
+  <button (click)="addRandomMagicItem()">Add Random Magic Item</button>
+</div>
