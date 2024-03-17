@@ -9,6 +9,18 @@
   padding: 10px;
   z-index: 10;
   left: 100%;
+  overflow: auto;
+  max-height: 325px;
+}
+
+@media (max-width: 600px) {
+  .tooltip {
+    max-width: 275px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-25%, -50%);
+
+  }
 }
 
 .tooltip-parent {
