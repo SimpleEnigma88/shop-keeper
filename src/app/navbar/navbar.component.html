@@ -1,6 +1,9 @@
 <div class="navbar">
-  @for (tab of tabs; track tab) {<a href="#" class="tab">
-    {{tab}}
-  </a>}
-
+  <div class="tabs">
+  @for (tab of tabs; track tab) {
+    <a class="tab" [class.active]="tab === activeTab" (click)="$event.preventDefault(); activeTab = tab">
+      {{tab}}
+    </a>
+  }
+  </div>
 </div>

@@ -9,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
   tabs = ['Home', 'DM', 'Characters', 'Loot', 'Profile'];
+  activeTab = this.tabs[0];
 }
