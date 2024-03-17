@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #F5F6F8;
+  font-family: "MedievalSharp", cursive;
+  font-style: normal;
+}

@@ -52,10 +52,10 @@ export class CharacterMagicItemInventoryComponent implements OnInit {
     );
   }
 
-  addRandomMagicItem() {
+  addRandomMagicItem(characterID = '2') {
     this.inventoryService.getCharacterRandomMagicItem().subscribe({
       next: (value: any) => {
-        this.addMagicItem('2', value.id);
+        this.addMagicItem(characterID, value.id);
       },
       error: error => console.error(error)
     });
