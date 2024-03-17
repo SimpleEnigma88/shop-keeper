@@ -1,6 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+body,
+html,
+app-root {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 body {
   background-color: #F5F6F8;
   font-family: "MedievalSharp", cursive;
+  font-weight: 600;
   font-style: normal;
+  scroll-padding: 0;
 }
