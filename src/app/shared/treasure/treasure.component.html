@@ -1,0 +1,13 @@
+<div class="flex-container">
+    <p>Individual</p>
+    <input type="checkbox" id="switch" [(ngModel)]="isHoard" /><label for="switch">Toggle</label>
+    <p>Hoard</p>
+</div>
+
+<div *ngIf="!isHoard" id="individual">
+    <p>Individual Treasure</p>
+</div>
+
+<div *ngIf="isHoard" id="hoard">
+    <p>Treasure Hoard</p>
+</div>

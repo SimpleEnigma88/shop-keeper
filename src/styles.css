@@ -9,9 +9,13 @@ app-root {
 }
 
 body {
-  background-color: #F5F6F8;
+  background-color: #e7f1ee;
   font-family: "MedievalSharp", cursive;
   font-weight: 600;
   font-style: normal;
   scroll-padding: 0;
+  background-image: url('assets/UI/backgroundmap.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }

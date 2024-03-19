@@ -6,7 +6,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  background-color: #F5F6F8;
   padding: 0 10px;
   border-bottom: 1px solid #000;
   margin-top: 3px;
@@ -22,7 +21,8 @@
 .tab {
   cursor: pointer;
   text-decoration: none;
-  background-color: #F5F6F8;
+  text-align: center;
+  background-color: #404040;
   color: #000;
   padding: 10px 20px 2px 20px;
   position: relative;
@@ -47,6 +47,7 @@
 
 .tab.active {
   transform: scale(1.1);
+  background-color: #DAA520;
   z-index: 1;
 }
 

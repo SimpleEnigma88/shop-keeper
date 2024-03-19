@@ -1,7 +1,10 @@
 <div class="medievalsharp-regular">
+  <input type="string" [(ngModel)]="newMagicItem" placeholder="Enter a digit">
+  <button (click)="addMagicItem('2', newMagicItem)">Submit</button>
+  <button (click)="addRandomMagicItem()">Add Random Magic Item</button>
   <h2>Magic Items</h2>
   @for (item of charMagicItems; track item.name) {
-  <span style="cursor: pointer;" (click)="deleteMagicItem('2', item)">X  </span>
+  <span style="cursor: pointer;" (click)="deleteMagicItem('2', item)">X </span>
   <span class="tooltip-parent"
       (mouseover)="showTooltipWithDelay(item)"
       (mouseout)="hideTooltipImmediately(item)">
@@ -14,7 +17,4 @@
   <br>
   }
 
-  <input type="string" [(ngModel)]="newMagicItem" placeholder="Enter a digit">
-  <button (click)="addMagicItem('2', newMagicItem)">Submit</button>
-  <button (click)="addRandomMagicItem()">Add Random Magic Item</button>
 </div>
