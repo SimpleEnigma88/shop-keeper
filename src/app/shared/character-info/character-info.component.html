@@ -1,13 +1,15 @@
-<h2>Andy's Character</h2><br>
-<div style="display: flex;" class="medievalsharp-regular">
-  <img src="/assets/classes/wizard.jpeg" alt="Wizard" width="120" height="120" style="margin-right: 10px;">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
-  <div style="display: flex; flex-direction: column; justify-content: space-around;">
-    <div>Name: Ithriael, The Liar</div>
-    <div>Class: Wizard</div>
-    <div>Level: 11</div>
+<body>
+
+  <h2>Andy's Character</h2>
+  <div class="separator"></div>
+  <div style="display: flex;" class="medievalsharp-regular">
+    <div class="class-icon-container">
+      <img class="icon-edge-fade" [src]="'/assets/classes/' + randomImage" alt="Wizard" width="120" height="120">
+    </div>
+    <div style="display: flex; flex-direction: column; justify-content: space-around;">
+      <div>Name: Ithriael, The Liar</div>
+      <div>Class: Wizard</div>
+      <div>Level: 11</div>
+    </div>
   </div>
-</div>
-<br>
+</body>

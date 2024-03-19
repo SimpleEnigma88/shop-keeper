@@ -19,3 +19,18 @@ body {
   background-position: center;
   background-size: cover;
 }
+
+.class-icon-container {
+    display: inline-block;
+    box-shadow: 0 0 15px 10px white;
+    /* Adjust the color to match your background */
+    border-radius: 50%;
+    /* Adjust for desired shape */
+  }
+
+.icon-edge-fade {
+    display: block;
+    border-radius: 50%;
+    /* Match the container's border-radius */
+  }
+  

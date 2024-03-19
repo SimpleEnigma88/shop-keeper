@@ -6,4 +6,12 @@
 
 body {
   background-color: #F5F6F8;
+  padding-left: 3vw;
+}
+
+.separator {
+  background: url('/assets/UI/page-seperator-rope.png') center repeat-x;
+  background-size: contain;
+  height: 1.25rem;
+  width: 100%;
 }
