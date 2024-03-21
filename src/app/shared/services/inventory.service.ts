@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -9,8 +9,12 @@ import { environment } from '../../../environments/environment';
 export class InventoryService {
   constructor(private http: HttpClient) { }
 
-  getCharacterRandomMagicItem() {
-    return this.http.get(`${environment.apiUrl}/magic_items/random`);
+  getCharacterRandomMagicItem(rarities: string[]) {
+    let params = new HttpParams();
+    if (rarities && rarities.length > 0) {
+      params = params.append('rarity', rarities.join(','));
+    }
+    return this.http.get(`${environment.apiUrl}/magic_items/random`, { params });
   }
 
   getCharacterMagicItems(characterId: string) {

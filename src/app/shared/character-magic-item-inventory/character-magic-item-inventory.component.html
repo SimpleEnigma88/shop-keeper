@@ -1,14 +1,25 @@
 <div class="medievalsharp-regular">
   <input type="string" [(ngModel)]="newMagicItem" placeholder="Enter a digit">
   <button (click)="addMagicItem('2', newMagicItem)">Submit</button>
-  <button (click)="addRandomMagicItem()">Add Random Magic Item</button>
+
+  <div>
+    <label><input type="checkbox" [(ngModel)]="common">Common</label>
+    <label><input type="checkbox" [(ngModel)]="uncommon">Uncommon</label>
+    <label><input type="checkbox" [(ngModel)]="rare">Rare</label>
+    <label><input type="checkbox" [(ngModel)]="veryRare">Very Rare</label>
+    <label><input type="checkbox" [(ngModel)]="artifact">Artifact</label>
+    <label><input type="checkbox" [(ngModel)]="legendary">Legendary</label>
+  </div>
+
+<button (click)="addRandomMagicItem(getSelectedRarities())">Add Random Magic Item</button>
+
   <h2>Magic Items</h2>
   @for (item of charMagicItems; track item.name) {
   <span style="cursor: pointer;" (click)="deleteMagicItem('2', item)">X </span>
   <span class="tooltip-parent"
       (mouseover)="showTooltipWithDelay(item)"
       (mouseout)="hideTooltipImmediately(item)">
-    {{ item.name }}
+    {{ item.name }} -- {{ item.rarity }}
     <span class="tooltip"
         [ngStyle]="{'visibility': item.showTooltip ? 'visible' : 'hidden'}">
       {{ item.desc }}
