@@ -1,8 +1,7 @@
-<div class="medievalsharp-regular">
+<div class="medievalsharp-regular" style="padding-top: 15px;">
   <input type="string" [(ngModel)]="newMagicItem" placeholder="Enter a digit">
   <button (click)="addMagicItem('2', newMagicItem)">Submit</button>
-
-  <div>
+  <div style="padding-top: 5px;">
     <label><input type="checkbox" [(ngModel)]="common">Common</label>
     <label><input type="checkbox" [(ngModel)]="uncommon">Uncommon</label>
     <label><input type="checkbox" [(ngModel)]="rare">Rare</label>
