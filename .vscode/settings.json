@@ -3,5 +3,6 @@
         "backgroundmap",
         "Burnette",
         "Ithriael"
-    ]
+    ],
+    "terminal.integrated.defaultProfile.windows": "Git Bash"
 }
