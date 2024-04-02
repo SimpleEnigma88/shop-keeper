@@ -16,7 +16,10 @@ export class NavbarComponent {
 
   }
 
-  navigate(tab: string) {
-    this.router.navigate([tab.toLowerCase()]);
+  onTabClick(tab: string) {
+    this.activeTab = tab;
+    if (tab === 'Loot') {
+      this.router.navigate([{ outlets: { mainView: ['loot'] } }]);
+    }
   }
 }
