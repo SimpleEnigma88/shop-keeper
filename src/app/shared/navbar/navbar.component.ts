@@ -21,5 +21,8 @@ export class NavbarComponent {
     if (tab === 'Loot') {
       this.router.navigate(['/loot']);
     }
+    if (tab === 'Home') {
+      this.router.navigate(['/home']);
+    }
   }
 }

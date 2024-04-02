@@ -5,9 +5,8 @@ import { TreasureComponent } from './shared/treasure/treasure.component';
 import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
-    { path: 'default', component: HeaderComponent, outlet: 'headerView' },
     { path: 'loot', component: TreasureComponent },
-    { path: 'inventory', component: HomeComponent },
-    { path: '', redirectTo: '/inventory', pathMatch: 'full' },
+    { path: 'home', component: HomeComponent },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '', component: AppComponent },
 ];
