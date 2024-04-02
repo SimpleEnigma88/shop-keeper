@@ -9,12 +9,12 @@ import { Router } from '@angular/router';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  tabs = ['Home', 'DM', 'Characters', 'Loot', 'Profile'];
+  tabs = ['Home', 'Party', 'Characters', 'Loot', 'Profile'];
   activeTab = this.tabs[0];
 
   constructor(private router: Router) {
-    
-   }
+
+  }
 
   navigate(tab: string) {
     this.router.navigate([tab.toLowerCase()]);
