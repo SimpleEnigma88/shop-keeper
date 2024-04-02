@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
     { path: 'default', component: HeaderComponent, outlet: 'headerView' },
-    { path: 'loot', redirectTo: '/(/mainView:TreasureComponent)', pathMatch: 'full' },
+    { path: 'loot', component: TreasureComponent, outlet: 'mainView' },
     { path: 'inventory', component: HomeComponent, outlet: 'mainView' },
     { path: '', redirectTo: '/(headerView:default//mainView:inventory)', pathMatch: 'full' },
     { path: '', component: AppComponent },
