@@ -19,7 +19,7 @@ export class NavbarComponent {
   onTabClick(tab: string) {
     this.activeTab = tab;
     if (tab === 'Loot') {
-      this.router.navigate([{ outlets: { mainView: ['loot'] } }]);
+      this.router.navigate(['/loot']);
     }
   }
 }
