@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 export const routes: Routes = [
     { path: 'default', component: HeaderComponent, outlet: 'headerView' },
     { path: 'loot', component: TreasureComponent },
-    { path: 'inventory', component: HomeComponent, outlet: 'mainView' },
-    { path: '', redirectTo: '/(headerView:default//mainView:inventory)', pathMatch: 'full' },
+    { path: 'inventory', component: HomeComponent },
+    { path: '', redirectTo: '/inventory', pathMatch: 'full' },
     { path: '', component: AppComponent },
 ];
