@@ -17,8 +17,5 @@ export class TreasureComponent {
   selectTab(tab: string) {
     this.selectedTab = tab;
   }
-  generateLoot() {
-    throw new Error('Method not implemented.');
-  }
 
 }
