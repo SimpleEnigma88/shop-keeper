@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { CharacterMagicItemInventoryComponent } from "../character-magic-item-inventory/character-magic-item-inventory.component";
 
 @Component({
-  selector: 'app-character-info',
-  standalone: true,
-  imports: [],
-  templateUrl: './character-info.component.html',
-  styleUrl: './character-info.component.css'
+    selector: 'app-character-info',
+    standalone: true,
+    templateUrl: './character-info.component.html',
+    styleUrl: './character-info.component.css',
+    imports: [CharacterMagicItemInventoryComponent]
 })
 
 export class CharacterInfoComponent implements OnInit {
