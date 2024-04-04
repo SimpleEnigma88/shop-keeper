@@ -1,16 +1,20 @@
 <div class="medievalsharp-regular" style="padding-top: 15px;">
   <input type="string" [(ngModel)]="newMagicItem" placeholder="Enter a digit">
   <button (click)="addMagicItem('2', newMagicItem)">Submit</button>
-  <div style="padding-top: 5px;">
-    <label><input type="checkbox" [(ngModel)]="common">Common</label>
-    <label><input type="checkbox" [(ngModel)]="uncommon">Uncommon</label>
-    <label><input type="checkbox" [(ngModel)]="rare">Rare</label>
-    <label><input type="checkbox" [(ngModel)]="veryRare">Very Rare</label>
-    <label><input type="checkbox" [(ngModel)]="artifact">Artifact</label>
-    <label><input type="checkbox" [(ngModel)]="legendary">Legendary</label>
-  </div>
+  <div style="padding-top: 10px;">
+    <div>
+      <label><input type="checkbox" [(ngModel)]="common">Common</label>
+      <label><input type="checkbox" [(ngModel)]="uncommon">Uncommon</label>
+      <label><input type="checkbox" [(ngModel)]="rare">Rare</label>
+    </div>
+    <div>
+      <label><input type="checkbox" [(ngModel)]="veryRare">Very Rare</label>
+      <label><input type="checkbox" [(ngModel)]="artifact">Artifact</label>
+      <label><input type="checkbox" [(ngModel)]="legendary">Legendary</label>
+    </div>
 
-<button (click)="addRandomMagicItem(getSelectedRarities())">Add Random Magic Item</button>
+    <button (click)="addRandomMagicItem(getSelectedRarities())">Add Random Magic Item</button>
+  </div>
 
   <h2>Magic Items</h2>
   @for (item of charMagicItems; track item.name) {
