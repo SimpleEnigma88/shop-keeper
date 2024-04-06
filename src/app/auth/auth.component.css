@@ -1,0 +1,43 @@
+:host {
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    background: transparent;
+    /* Antique white */
+    padding: 20px;
+    border: 2px solid #8B4513;
+    /* Saddle brown */
+    border-radius: 10px;
+}
+
+input,
+button {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #8B4513;
+    /* Saddle brown */
+    color: #FAEBD7;
+    /* Antique white */
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #A0522D;
+    /* Sienna */
+}
+
+h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #42280e;
+    /* Saddle brown */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}

@@ -1,0 +1,14 @@
+<h1>Welcome to ShopKeeper!</h1>
+
+<form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="user_name" placeholder="Username">
+    <input *ngIf="!isLoginMode" type="email" formControlName="email" placeholder="Email">
+    <input *ngIf="!isLoginMode" type="text" formControlName="first_name" placeholder="First Name">
+    <input *ngIf="!isLoginMode" type="text" formControlName="last_name" placeholder="Last Name">
+    <input type="password" formControlName="password" placeholder="Password">
+    <input *ngIf="!isLoginMode" type="password" formControlName="password_confirmation" placeholder="Confirm Password">
+    <br>
+    <button type="submit">{{ isLoginMode ? 'Login' : 'Signup' }}</button>
+</form>
+<br>
+<button (click)="switchMode()">{{ isLoginMode ? 'Switch to Signup' : 'Switch to Login' }}</button>
