@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -11,7 +12,9 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
 })
 export class AuthComponent implements OnInit {
   authForm!: FormGroup;
-  isLoginMode = true;
+  isLoginMode = false;
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.authForm = new FormGroup({
@@ -38,6 +41,7 @@ export class AuthComponent implements OnInit {
 
   onSubmit() {
     if (this.authForm.invalid) {
+      console.log('Invalid form');
       return;
     }
 
@@ -46,7 +50,18 @@ export class AuthComponent implements OnInit {
 
 
     } else {
-      // signup logic here
+      this.authService.signup(this.authForm.value).subscribe({
+        next: response => {
+          console.log(response);
+        },
+        error: error => {
+          console.log(error);
+        },
+        complete: () => {
+          console.log('Signup complete');
+        }
+      });
+
     }
 
     this.authForm.reset();

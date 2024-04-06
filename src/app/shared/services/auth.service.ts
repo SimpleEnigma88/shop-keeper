@@ -12,10 +12,10 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   signup(player: Player) {
-    return this.http.post(`${this.APIurl}/signup`, player);
+    return this.http.post(`${this.APIurl}/players`, player);
   }
 
   login(player: Player) {
-    return this.http.post(`${this.APIurl}/login`, player);
+    return this.http.post(`${this.APIurl}/players`, player);
   }
 }
