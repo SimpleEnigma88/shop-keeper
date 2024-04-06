@@ -10,12 +10,10 @@ export class InventoryService {
   constructor(private http: HttpClient) { }
 
   getCharacterRandomMagicItem(rarities: string[]) {
-    console.log(rarities)
     let params = new HttpParams();
     if (rarities && rarities.length > 0) {
       params = params.append('rarity', rarities.join(','));
     }
-    console.log(params)
     return this.http.get(`${environment.apiUrl}/magic_items/random`, { params });
   }
 

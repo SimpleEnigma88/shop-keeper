@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { CharacterMagicItemInventoryComponent } from './shared/character-magic-item-inventory/character-magic-item-inventory.component';
 import { CharacterInfoComponent } from './shared/character-info/character-info.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -14,5 +14,9 @@ import { HeaderComponent } from './shared/header/header.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'shop-keeper';
+  title = 'ShopKeeper';
+
+  constructor(private router: Router) {
+    this.router.navigate(['']); // Navigate to home component on app initialization
+  }
 }
