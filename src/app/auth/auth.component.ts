@@ -19,9 +19,17 @@ export class AuthComponent implements OnInit {
       'email': new FormControl(null, [Validators.required, Validators.email]),
       'first_name': new FormControl(null, Validators.required),
       'last_name': new FormControl(null, Validators.required),
-      'password': new FormControl(null, Validators.required),
-      'password_confirmation': new FormControl(null, Validators.required)
+      'password': new FormControl(null, [Validators.required, Validators.minLength(8)]),
+      'password_confirmation': new FormControl(null, [Validators.required, this.matchPassword.bind(this)])
     });
+
+  }
+
+  matchPassword(control: FormControl): { [s: string]: boolean } | null {
+    if (this.authForm && this.authForm.get('password') && control.value !== this.authForm.get('password')?.value) {
+      return { 'passwordsNotMatch': true };
+    }
+    return null;
   }
 
   switchMode() {
@@ -35,6 +43,8 @@ export class AuthComponent implements OnInit {
 
     if (this.isLoginMode) {
       // login logic here
+
+
     } else {
       // signup logic here
     }
