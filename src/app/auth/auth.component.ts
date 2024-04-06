@@ -19,17 +19,21 @@ export class AuthComponent implements OnInit {
   ngOnInit() {
     this.authForm = new FormGroup({
       'user_name': new FormControl(null, Validators.required),
-      'email': new FormControl(null, [Validators.required, Validators.email]),
-      'first_name': new FormControl(null, Validators.required),
-      'last_name': new FormControl(null, Validators.required),
       'password': new FormControl(null, [Validators.required, Validators.minLength(8)]),
-      'password_confirmation': new FormControl(null, [Validators.required, this.matchPassword.bind(this)])
+      'email': new FormControl(null, this.isLoginMode ? [] : [Validators.required, Validators.email]),
+      'first_name': new FormControl(null, this.isLoginMode ? [] : Validators.required),
+      'last_name': new FormControl(null, this.isLoginMode ? [] : Validators.required),
+      'password_confirmation': new FormControl(null, this.isLoginMode ? [] : [Validators.required, this.matchPassword.bind(this)])
     });
-
   }
 
   matchPassword(control: FormControl): { [s: string]: boolean } | null {
-    if (this.authForm && this.authForm.get('password') && control.value !== this.authForm.get('password')?.value) {
+    if (
+      this.authForm &&
+      this.authForm.get('password') &&
+      this.authForm.get('password')?.value &&
+      control.value !== this.authForm.get('password')?.value
+    ) {
       return { 'passwordsNotMatch': true };
     }
     return null;
@@ -37,6 +41,11 @@ export class AuthComponent implements OnInit {
 
   switchMode() {
     this.isLoginMode = !this.isLoginMode;
+    this.authForm.get('email')?.setValidators(this.isLoginMode ? [] : [Validators.required, Validators.email]);
+    this.authForm.get('first_name')?.setValidators(this.isLoginMode ? [] : Validators.required);
+    this.authForm.get('last_name')?.setValidators(this.isLoginMode ? [] : Validators.required);
+    this.authForm.get('password_confirmation')?.setValidators(this.isLoginMode ? [] : [Validators.required, this.matchPassword.bind(this)]);
+    this.authForm.updateValueAndValidity();
   }
 
   onSubmit() {
