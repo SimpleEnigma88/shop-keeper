@@ -42,12 +42,23 @@ export class AuthComponent implements OnInit {
   onSubmit() {
     if (this.authForm.invalid) {
       console.log('Invalid form');
-      return;
+      const invalidField = Object.keys(this.authForm.controls).find(field => this.authForm.controls[field].invalid);
+      console.log('Invalid field:', invalidField);
     }
 
     if (this.isLoginMode) {
       // login logic here
-
+      this.authService.login(this.authForm.value).subscribe({
+        next: response => {
+          console.log(response);
+        },
+        error: error => {
+          console.log(error);
+        },
+        complete: () => {
+          console.log('Login complete');
+        }
+      });
 
     } else {
       this.authService.signup(this.authForm.value).subscribe({
