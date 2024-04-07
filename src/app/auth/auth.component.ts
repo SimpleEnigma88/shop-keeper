@@ -50,6 +50,7 @@ export class AuthComponent implements OnInit {
   }
 
   onSubmit() {
+    // Temp error handling TODO: Implement proper error handling
     if (this.authForm.invalid) {
       console.log('Invalid form');
       const invalidField = Object.keys(this.authForm.controls).find(field => this.authForm.controls[field].invalid);
@@ -60,13 +61,10 @@ export class AuthComponent implements OnInit {
     }
 
     if (this.isLoginMode) {
-      // login logic here
       this.authService.login(this.authForm.value.user_name, this.authForm.value.password).subscribe({
         next: (response: any) => {
           console.log(response);
-          // save token to local storage
           localStorage.setItem('token', response.token);
-          // navigate to home page
           this.router.navigate(['/home']);
         },
         error: error => {
@@ -79,14 +77,13 @@ export class AuthComponent implements OnInit {
 
     } else {
       this.authService.signup(this.authForm.value).subscribe({
-        next: response => {
+        next: (response: any) => {
           console.log(response);
         },
         error: error => {
           console.log(error);
         },
         complete: () => {
-          console.log('Signup complete');
         }
       });
 
