@@ -6,16 +6,15 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class PartyService {
-  url = environment.apiUrl;
   curParty: any[] = [];
 
   constructor(private http: HttpClient) { }
 
   getPartyById(partyId: string) {
-    return this.http.get(`${this.url}/${partyId}`);
+    return this.http.get(`${environment.apiUrl}/${partyId}`);
   }
 
   createParty(party: any) {
-    return this.http.post(`${this.url}/parties`, party);
+    return this.http.post(`${environment.apiUrl}/parties`, party);
   }
 }

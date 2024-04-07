@@ -9,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './party.component.css'
 })
 export class PartyComponent implements OnInit {
+  curPlayer: any[] = [];
 
   constructor(private http: HttpClient) { }
-  curParty: any[] = [];
+
 
   ngOnInit(): void {
   }
