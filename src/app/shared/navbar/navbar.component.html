@@ -1,10 +1,14 @@
 <div class="navbar">
+  @if (isLoggedIn) {
   <div class="tabs">
     @for (tab of tabs; track tab) {
-    <a class="tab" [class.active]="tab === activeTab" (click)="$event.preventDefault() ; activeTab = tab"
+    <a class="tab" [class.active]="tab === activeTab"
+        (click)="$event.preventDefault(); 
+          activeTab = tab"
         (click)="onTabClick(tab)">
       {{tab}}
     </a>
     }
   </div>
+  }
 </div>

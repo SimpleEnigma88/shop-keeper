@@ -65,7 +65,7 @@ export class AuthComponent implements OnInit {
       this.authService.login(this.authForm.value.user_name, this.authForm.value.password).subscribe({
         next: (response: any) => {
           console.log(response);
-          localStorage.setItem('token', response.token);
+          this.authService.setToken(response.token);
           this.router.navigate(['/home']);
         },
         error: error => {
@@ -100,5 +100,11 @@ export class AuthComponent implements OnInit {
     }
 
     this.authForm.reset();
+  }
+
+  autoLogin() {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/home']);
+    }
   }
 }

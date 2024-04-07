@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 
 export class NavbarComponent {
-  tabs = ['Home', 'Party', 'Characters', 'Loot', 'Profile'];
+  tabs = ['Home', 'Party', 'Characters', 'Loot', 'logout'];
   activeTab = this.tabs[0];
 
   // Build the tabRoutes object from the tabs array
@@ -19,7 +20,7 @@ export class NavbarComponent {
     return routes;
   }, {});
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   onTabClick(tab: string) {
     this.activeTab = tab;
@@ -28,8 +29,15 @@ export class NavbarComponent {
     const route = this.tabRoutes[tab];
 
     // Navigate to the route with a single call
-    if (route) {
+    if (route === 'logout') {
+      this.logout();
+    } else if (route) {
       this.router.navigate([route]);
     }
+  }
+
+  logout() {
+    this.authService.logOut();
+    this.router.navigate(['/auth']);
   }
 }
