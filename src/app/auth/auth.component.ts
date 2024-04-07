@@ -12,7 +12,7 @@ import { AuthService } from '../shared/services/auth.service';
 })
 export class AuthComponent implements OnInit {
   authForm!: FormGroup;
-  isLoginMode = false;
+  isLoginMode = true;
 
   constructor(private authService: AuthService) { }
 
