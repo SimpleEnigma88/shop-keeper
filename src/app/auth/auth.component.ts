@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -14,7 +15,7 @@ export class AuthComponent implements OnInit {
   authForm!: FormGroup;
   isLoginMode = true;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.authForm = new FormGroup({
@@ -60,11 +61,13 @@ export class AuthComponent implements OnInit {
 
     if (this.isLoginMode) {
       // login logic here
-      this.authService.login(this.authForm.value).subscribe({
+      this.authService.login(this.authForm.value.user_name, this.authForm.value.password).subscribe({
         next: (response: any) => {
           console.log(response);
           // save token to local storage
           localStorage.setItem('token', response.token);
+          // navigate to home page
+          this.router.navigate(['/home']);
         },
         error: error => {
           console.log(error);

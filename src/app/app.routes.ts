@@ -7,11 +7,22 @@ import { PartyComponent } from './party/party.component';
 import { AuthComponent } from './auth/auth.component';
 
 export const routes: Routes = [
-    { path: 'loot', component: TreasureComponent },
-    { path: 'home', component: HomeComponent },
-    { path: 'party', component: PartyComponent },
-    { path: 'auth', component: AuthComponent },
-    { path: 'characters', component: CharacterInfoComponent },
     { path: '', redirectTo: '/auth', pathMatch: 'full' },
-    { path: '', component: AppComponent },
+    {
+        path: 'loot',
+        loadComponent: () => import('./shared/treasure/treasure.component').then(m => m.TreasureComponent)
+    },
+    {
+        path: 'home',
+        loadComponent: () => import('./home/home.component').then(m => m.HomeComponent)
+    },
+    {
+        path: 'party',
+        loadComponent: () => import('./party/party.component').then(m => m.PartyComponent)
+    },
+    { path: 'auth', component: AuthComponent },
+    {
+        path: 'characters',
+        loadComponent: () => import('./shared/character-info/character-info.component').then(m => m.CharacterInfoComponent)
+    },
 ];
