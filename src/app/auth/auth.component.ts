@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../shared/services/auth.service';
 import { Router } from '@angular/router';
+import { Player } from '../models/player';
 
 @Component({
   selector: 'app-auth',
@@ -76,7 +77,16 @@ export class AuthComponent implements OnInit {
       });
 
     } else {
-      this.authService.signup(this.authForm.value).subscribe({
+      const player: Player = {
+        user_name: this.authForm.value.user_name,
+        password: this.authForm.value.password,
+        password_confirmation: this.authForm.value.password_confirmation,
+        email: this.authForm.value.email,
+        first_name: this.authForm.value.first_name,
+        last_name: this.authForm.value.last_name
+      };
+
+      this.authService.signup(player).subscribe({
         next: (response: any) => {
           console.log(response);
         },
