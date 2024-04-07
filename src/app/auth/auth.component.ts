@@ -12,14 +12,14 @@ import { AuthService } from '../shared/services/auth.service';
 })
 export class AuthComponent implements OnInit {
   authForm!: FormGroup;
-  isLoginMode = false;
+  isLoginMode = true;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.authForm = new FormGroup({
       'user_name': new FormControl(null, Validators.required),
-      'password': new FormControl(null, [Validators.required, Validators.minLength(8)]),
+      'password': new FormControl(null, [Validators.required, Validators.minLength(5)]),
       'email': new FormControl(null, this.isLoginMode ? [] : [Validators.required, Validators.email]),
       'first_name': new FormControl(null, this.isLoginMode ? [] : Validators.required),
       'last_name': new FormControl(null, this.isLoginMode ? [] : Validators.required),
@@ -53,13 +53,18 @@ export class AuthComponent implements OnInit {
       console.log('Invalid form');
       const invalidField = Object.keys(this.authForm.controls).find(field => this.authForm.controls[field].invalid);
       console.log('Invalid field:', invalidField);
+      if (invalidField) {
+        console.log('Errors:', this.authForm.controls[invalidField]?.errors)
+      }
     }
 
     if (this.isLoginMode) {
       // login logic here
       this.authService.login(this.authForm.value).subscribe({
-        next: response => {
+        next: (response: any) => {
           console.log(response);
+          // save token to local storage
+          localStorage.setItem('token', response.token);
         },
         error: error => {
           console.log(error);

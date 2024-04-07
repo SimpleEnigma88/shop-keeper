@@ -6,6 +6,7 @@ import { Player } from '../../models/player';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   APIurl = environment.apiUrl;
 
@@ -16,6 +17,6 @@ export class AuthService {
   }
 
   login(player: Player) {
-    return this.http.post(`${this.APIurl}/players`, player);
+    return this.http.post(`${this.APIurl}/login`, player);
   }
 }
