@@ -40,4 +40,10 @@ export class AuthService {
     localStorage.removeItem('token');
     this.router.navigate(['/auth']);
   }
+
+  autoLogin() {
+    if (this.isLoggedIn()) {
+      this.router.navigate(['/home']);
+    }
+  }
 }

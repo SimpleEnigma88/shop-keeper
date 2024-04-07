@@ -19,6 +19,8 @@ export class AuthComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+    this.autoLogin();
+
     this.authForm = new FormGroup({
       'user_name': new FormControl(null, Validators.required),
       'password': new FormControl(null, [Validators.required, Validators.minLength(5)]),
