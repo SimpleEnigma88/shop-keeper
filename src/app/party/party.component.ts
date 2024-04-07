@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 
 @Component({
   selector: 'app-party',
@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './party.component.css'
 })
 export class PartyComponent implements OnInit {
-  curPlayer: any[] = [];
+  playerParties = signal([]);
 
   constructor(private http: HttpClient) { }
 

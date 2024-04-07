@@ -38,7 +38,16 @@ export class AuthService {
 
   logOut() {
     localStorage.removeItem('token');
+    localStorage.removeItem('playerId');
     this.router.navigate(['/auth']);
+  }
+
+  getPlayerId() {
+    return localStorage.getItem('playerId');
+  }
+
+  setPlayerId(playerId: string) {
+    localStorage.setItem('playerId', playerId);
   }
 
   autoLogin() {
