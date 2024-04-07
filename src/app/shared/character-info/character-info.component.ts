@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { CharacterMagicItemInventoryComponent } from "../character-magic-item-inventory/character-magic-item-inventory.component";
 
 @Component({
   selector: 'app-character-info',
   standalone: true,
-  imports: [],
   templateUrl: './character-info.component.html',
-  styleUrl: './character-info.component.css'
+  styleUrl: './character-info.component.css',
+  imports: [CharacterMagicItemInventoryComponent]
 })
 
 export class CharacterInfoComponent implements OnInit {
@@ -24,6 +25,5 @@ export class CharacterInfoComponent implements OnInit {
     this.randomImage = this.images[Math.floor(Math.random() * this.images.length)];
     this.randomClass = this.randomImage.split('.')[0];
     this.randomClass = this.randomClass.charAt(0).toUpperCase() + this.randomClass.slice(1);
-    console.log(this.randomImage);
   }
 }

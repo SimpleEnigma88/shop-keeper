@@ -1,16 +1,21 @@
 <div class="medievalsharp-regular" style="padding-top: 15px;">
   <input type="string" [(ngModel)]="newMagicItem" placeholder="Enter a digit">
   <button (click)="addMagicItem('2', newMagicItem)">Submit</button>
-  <div style="padding-top: 5px;">
-    <label><input type="checkbox" [(ngModel)]="common">Common</label>
-    <label><input type="checkbox" [(ngModel)]="uncommon">Uncommon</label>
-    <label><input type="checkbox" [(ngModel)]="rare">Rare</label>
-    <label><input type="checkbox" [(ngModel)]="veryRare">Very Rare</label>
-    <label><input type="checkbox" [(ngModel)]="artifact">Artifact</label>
-    <label><input type="checkbox" [(ngModel)]="legendary">Legendary</label>
+  <div style="display: flex; justify-content: space-between; padding-top: 10px;">
+    <div style="display: flex; flex-direction: column;">
+      <label><input type="checkbox" [(ngModel)]="common">Common</label>
+      <label><input type="checkbox" [(ngModel)]="uncommon">Uncommon</label>
+      <label><input type="checkbox" [(ngModel)]="rare">Rare</label>
+    </div>
+    <div style="display: flex; flex-direction: column;">
+      <label><input type="checkbox" [(ngModel)]="veryRare">Very Rare</label>
+      <label><input type="checkbox" [(ngModel)]="artifact">Artifact</label>
+      <label><input type="checkbox" [(ngModel)]="legendary">Legendary</label>
+    </div>
+    <div style="display: flex; flex-direction: column;">
+      <button (click)="addRandomMagicItem(getSelectedRarities())">Add Random Magic Item</button>
+    </div>
   </div>
-
-<button (click)="addRandomMagicItem(getSelectedRarities())">Add Random Magic Item</button>
 
   <h2>Magic Items</h2>
   @for (item of charMagicItems; track item.name) {
