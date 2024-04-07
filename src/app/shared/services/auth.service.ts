@@ -13,7 +13,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   signup(player: Player) {
-    return this.http.post(`${environment.apiUrl}/players`, player);
+    return this.http.post(`${environment.apiUrl}/players`, { player });
   }
 
   login(user_name: string, password: string) {
