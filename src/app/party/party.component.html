@@ -1,0 +1,9 @@
+@for (party of playerParties; track party.name) {
+<p>{{party.name}} - {{party.dm_player_id}}</p>
+}
+
+<form (submit)="createParty(newPartyName, playerID)">
+    <label for="partyName">Party Name:</label>
+    <input type="text" id="partyName" name="partyName" [(ngModel)]="newPartyName" required>
+    <button type="submit">Create Party</button>
+</form>

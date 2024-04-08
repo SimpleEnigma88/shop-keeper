@@ -24,8 +24,21 @@ export class AuthService {
       });
   }
 
+  getPlayerIdFromToken(token: string) {
+    try {
+      const payload = token.split('.')[1];
+      const decodedPayload = JSON.parse(window.atob(payload));
+      console.log('Decoded payload:', decodedPayload);
+      return decodedPayload.player_id;
+    } catch (err) {
+      console.error('Failed to parse token', err);
+      return null;
+    }
+  }
+
   setToken(token: string) {
     localStorage.setItem('token', token);
+    localStorage.setItem('playerId', this.getPlayerIdFromToken(token));
   }
 
   getToken() {
@@ -40,10 +53,6 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('playerId');
     this.router.navigate(['/auth']);
-  }
-
-  getPlayerId() {
-    return localStorage.getItem('playerId');
   }
 
   setPlayerId(playerId: string) {

@@ -10,8 +10,4 @@ export class PlayerService {
   APIurl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
-
-  createPlayer(player: Player) {
-    return this.http.post(`${this.APIurl}/players`, player);
-  }
 }
