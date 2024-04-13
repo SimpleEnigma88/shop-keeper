@@ -69,7 +69,7 @@ export class CharacterMagicItemInventoryComponent implements OnInit {
     );
   }
 
-  deleteMagicItem(charID = '2', item: MagicItem) {
+  deleteMagicItem(charID: string, item: MagicItem) {
     this.inventoryService.deleteCharacterMagicItem(charID, item.id).subscribe(
       () => {
         const index = this.charMagicItems.indexOf(item);

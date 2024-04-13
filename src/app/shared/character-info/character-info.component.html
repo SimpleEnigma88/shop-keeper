@@ -14,6 +14,47 @@
 
 <!-- <app-character-magic-item-inventory /> -->
 
-<div>
+<!-- Form for creating a new character -->
+<label for="characterName">Character Name:</label>
+<input type="text" id="characterName" name="characterName" [(ngModel)]="newCharacterName" required>
+<label for="characterClass">Character Class:</label>
+<select id="characterClass" name="characterClass" [(ngModel)]="newCharacterClass" required>
+  <option value="Barbarian">Barbarian</option>
+  <option value="Bard">Bard</option>
+  <option value="Cleric">Cleric</option>
+  <option value="Druid">Druid</option>
+  <option value="Fighter">Fighter</option>
+  <option value="Monk">Monk</option>
+  <option value="Paladin">Paladin</option>
+  <option value="Ranger">Ranger</option>
+  <option value="Rogue">Rogue</option>
+  <option value="Sorcerer">Sorcerer</option>
+  <option value="Warlock">Warlock</option>
+  <option value="Wizard">Wizard</option>
+</select>
+<label for="characterLevel">Character Level:</label>
+<input type="number" id="characterLevel" name="characterLevel" [(ngModel)]="newCharacterLevel" min="1" max="20"
+    required>
 
+<button type="submit" (click)="createCharacter(newCharacterName, newCharacterClass, newCharacterLevel)">Create
+  Character</button>
+<hr>
+
+
+@for (char of chars; track char.id) {
+<div class="character-badge" (click)="selectCharacter(char)">
+  <div class="badge-content">
+    <div>
+      <h2 id="name">{{ char.name }}</h2>
+      <p>{{ char.char_class }}, lvl: {{ char.level }}</p>
+    </div>
+    <div>
+      <p>Party: </p>
+    </div>
+  </div>
 </div>
+@if (char == selectedCharacter) {
+<app-character-magic-item-inventory />
+}
+
+}
