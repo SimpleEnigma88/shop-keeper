@@ -4,13 +4,14 @@ import { Character } from '../../models/character';
 import { CharacterService } from '../services/character.service';
 import { FormsModule } from '@angular/forms';
 import { InventoryService } from '../services/inventory.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-character-info',
   standalone: true,
   templateUrl: './character-info.component.html',
   styleUrl: './character-info.component.css',
-  imports: [CharacterMagicItemInventoryComponent, FormsModule]
+  imports: [CharacterMagicItemInventoryComponent, FormsModule, CommonModule]
 })
 
 export class CharacterInfoComponent implements OnInit {
@@ -21,6 +22,8 @@ export class CharacterInfoComponent implements OnInit {
   newCharacterLevel: number = 0;
   selectedCharacter: Character | null = null;
   selectedCharacterMagicItems: MagicItem[] = [];
+  charMagicItems: MagicItem[] = [];
+  newMagicItem: string = '';
 
   constructor(private characterService: CharacterService, private inventoryService: InventoryService) {
 
@@ -94,6 +97,26 @@ export class CharacterInfoComponent implements OnInit {
         complete: () => console.log('Complete')
       });
     }
+  }
+
+  deleteMagicItem(charID: string, item: MagicItem) {
+    this.inventoryService.deleteCharacterMagicItem(charID, item.id).subscribe({
+      next: () => {
+        this.charMagicItems = this.charMagicItems.filter(i => i.id !== item.id);
+      },
+      error: error => console.error(error)
+    });
+  }
+
+  showTooltipWithDelay(item: MagicItem) {
+    item.tooltipTimeout = setTimeout(() => {
+      item.showTooltip = true;
+    }, 350);  // delay in milliseconds
+  }
+
+  hideTooltipImmediately(item: MagicItem) {
+    clearTimeout(item.tooltipTimeout);
+    item.showTooltip = false;
   }
 
   ngOnInit() {

@@ -70,15 +70,12 @@ export class CharacterMagicItemInventoryComponent implements OnInit {
   }
 
   deleteMagicItem(charID: string, item: MagicItem) {
-    this.inventoryService.deleteCharacterMagicItem(charID, item.id).subscribe(
-      () => {
-        const index = this.charMagicItems.indexOf(item);
-        if (index > -1) {
-          this.charMagicItems.splice(index, 1);
-        }
+    this.inventoryService.deleteCharacterMagicItem(charID, item.id).subscribe({
+      next: () => {
+        this.charMagicItems = this.charMagicItems.filter(i => i.id !== item.id);
       },
-      error => console.error(error)
-    );
+      error: error => console.error(error)
+    });
   }
 
   addRandomMagicItem(rarities: string[], characterID = '2') {

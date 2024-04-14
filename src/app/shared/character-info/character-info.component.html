@@ -12,7 +12,7 @@
 </div>
 <br> -->
 
-<!-- <app-character-magic-item-inventory /> -->
+<app-character-magic-item-inventory />
 
 <!-- Form for creating a new character -->
 <label for="characterName">Character Name:</label>
@@ -53,8 +53,21 @@
     </div>
   </div>
 </div>
+
 @if (char == selectedCharacter) {
-<app-character-magic-item-inventory />
+<h2>Magic Items</h2>
+@for (item of charMagicItems; track item.name) {
+<span style="cursor: pointer;" (click)="deleteMagicItem('2', item)">X </span>
+<span class="tooltip-parent"
+    (mouseover)="showTooltipWithDelay(item)"
+    (mouseout)="hideTooltipImmediately(item)">
+  {{ item.name }} -- {{ item.rarity }}
+  <span class="tooltip"
+      [ngStyle]="{'visibility': item.showTooltip ? 'visible' : 'hidden'}">
+    {{ item.desc }}
+  </span>
+</span>
+}
 }
 
 }
