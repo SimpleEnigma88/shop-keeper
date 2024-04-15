@@ -19,10 +19,7 @@ export class PartyComponent implements OnInit {
   // Get current playerID
   playerID = this.authService.getPlayerIdFromToken(localStorage.getItem('token') || '');
 
-  constructor(private http: HttpClient,
-    private partyService: PartyService,
-    private router: Router,
-    private authService: AuthService) {
+  constructor(private partyService: PartyService, private authService: AuthService) {
 
     if (this.playerID === null) {
       this.authService.logOut();
