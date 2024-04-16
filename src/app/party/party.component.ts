@@ -50,9 +50,13 @@ export class PartyComponent implements OnInit {
 
   deleteParty(partyId: string) {
     // Call the party service to delete the party
-    this.partyService.deleteParty(partyId).subscribe((res) => {
-      // Remove the party from the playerParties array
-      this.playerParties = this.playerParties.filter(party => party.id !== partyId);
+    this.partyService.deleteParty(partyId, this.playerID).subscribe({
+      next: (value) => {
+        // Remove the party from the playerParties array
+        this.playerParties = this.playerParties.filter(party => party.id !== partyId);
+      },
+      error: (err) => { console.error('Observable emitted an error: ' + JSON.stringify(err)); },
+      complete: () => { console.log('Observable emitted the complete notification'); }
     });
   }
 

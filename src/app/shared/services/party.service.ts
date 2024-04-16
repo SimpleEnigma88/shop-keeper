@@ -30,7 +30,7 @@ export class PartyService {
     return this.http.post(`${environment.apiUrl}/players/${dm_player_id}/parties`, { name, dm_player_id });
   }
 
-  deleteParty(partyId: string) {
-    return this.http.delete(`${environment.apiUrl}/parties/${partyId}`);
+  deleteParty(partyId: string, dm_player_id: string) {
+    return this.http.delete(`${environment.apiUrl}/players/${dm_player_id}/parties/${partyId}`);
   }
 }
